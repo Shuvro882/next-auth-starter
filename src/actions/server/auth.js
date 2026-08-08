@@ -4,6 +4,7 @@ import { dbConnect } from "@/lib/dbConnect";
 import bcrypt from "bcryptjs";
 export const postUser= async(payload)=>{
     console.log(payload);
+    //0- validation
 
     //1- check user exist or not
 
@@ -33,6 +34,11 @@ export const postUser= async(payload)=>{
         return {
             success: true,
             message: `user created with ${result.insertedId.toString()}`
-        }
+        };
+    } else {
+        return {
+            success: false,
+            message: 'Some went wrong,try again' 
+        };
     }
 }
